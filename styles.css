@@ -238,7 +238,7 @@ p {
 
 .hero-content {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
   align-items: center;
   min-height: 760px;
   gap: 2rem;
@@ -293,7 +293,17 @@ p {
   letter-spacing: 0.06em;
 }
 
-.hero-visual {
+.watch-showcase {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(221, 208, 192, 0.22));
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
+.watch-showcase + .craft {
+  padding-top: 3rem;
+}
+
+.watch-showcase-inner {
   display: flex;
   justify-content: center;
   align-items: center;
