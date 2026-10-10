@@ -1,301 +1,874 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Indirana Watch Company</title>
-    <meta
-      name="description"
-      content="Indirana Watch Company brings together Indian heritage, modern craftsmanship, and timeless design in elegant luxury timepieces."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a href="#top" class="brand" aria-label="Indirana home">
-          <span class="brand-mark">I</span>
-          <span class="brand-text">Indirana</span>
-        </a>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Indirana Watch Company</title>
+<meta name="description" content="Indirana Watch Company — leather and automatic watches with Indian dial motifs.">
+<style>
+:root{
+  --bg:#EDF1EC; --surface:#F8FAF6; --fg:#10201F; --muted:#4A5D5A; --line:#C5D1CB; --arch:#DCE5DE;
+  --accent:#9A2427; --marigold:#E8A020; --btn-bg:#0F4C4A; --btn-fg:#F4F1E6;
+  --band:#0E3F3D; --band-fg:#EEEADD; --band-muted:#A9C1BB; --band-line:#2C5D59; --band-card:#124A47;
+  --font-display:'Times New Roman',Times,'Noto Serif Devanagari','Mangal','Kohinoor Devanagari',serif;
+  --font-body:'Times New Roman',Times,'Noto Serif Devanagari','Mangal','Kohinoor Devanagari',serif;
+  color-scheme:light;
+  box-sizing:border-box;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1B1A; --surface:#102725; --fg:#ECE8DB; --muted:#9EB2AD; --line:#27413E; --arch:#163330;
+    --accent:#F0A93A; --btn-bg:#E8A020; --btn-fg:#1A1200;
+    --band:#0F2E2C; --band-card:#143A37; --band-line:#2A524E;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1B1A; --surface:#102725; --fg:#ECE8DB; --muted:#9EB2AD; --line:#27413E; --arch:#163330;
+  --accent:#F0A93A; --btn-bg:#E8A020; --btn-fg:#1A1200;
+  --band:#0F2E2C; --band-card:#143A37; --band-line:#2A524E;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;padding:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55}
+img{max-width:100%}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit}
+.wrap{width:min(100%,1180px);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.band :focus-visible{outline-color:var(--marigold)}
+.eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.band .eyebrow{color:var(--marigold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;font-size:.95rem;letter-spacing:.02em;padding:.8rem 1.35rem;background:var(--btn-bg);color:var(--btn-fg);border:1px solid var(--btn-bg);border-radius:2px;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg)}
+.btn.small{padding:.5rem 1rem;font-size:.85rem}
 
-        <nav class="main-nav" aria-label="Main navigation">
-          <a href="#story">Story</a>
-          <a href="#collections">Collections</a>
-          <a href="#craft">Craft</a>
-          <a href="#journal">Journal</a>
-          <a href="#contact">Contact</a>
-        </nav>
+/* header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem}
+.brand{display:flex;align-items:center;gap:.6rem;color:var(--fg);text-decoration:none}
+.brand svg{width:26px;height:32px;flex:none;color:var(--accent)}
+.brand b{font-family:var(--font-display);font-size:1.25rem;font-weight:700;letter-spacing:.02em;line-height:1}
+.brand small{display:block;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+.nav{display:flex;align-items:center;gap:1.5rem}
+.nav a:not(.btn){color:var(--fg);text-decoration:none;font-size:.95rem;font-weight:500}
+.nav a:not(.btn):hover{color:var(--accent)}
+@media (max-width:700px){.nav a:not(.btn){display:none}}
 
-        <a class="nav-cta" href="#collections">Explore Watches</a>
+/* hero */
+.hero{padding-block:clamp(28px,5vw,64px) clamp(32px,5vw,56px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
+.hero-copy{min-width:0;display:grid;gap:1.4rem}
+.hero h1{font-size:clamp(2.7rem,7vw,5.2rem);font-weight:700}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-copy .lede{font-size:1.15rem;color:var(--muted);max-width:34em}
+.price-pair{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:var(--surface);max-width:520px}
+.price-pair button{all:unset;box-sizing:border-box;cursor:pointer;padding:.9rem 1.1rem;display:grid;gap:.15rem}
+.price-pair button+button{border-left:1px solid var(--line)}
+.price-pair button:hover{background:var(--arch)}
+.price-pair button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.price-pair span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.price-pair strong{font-family:var(--font-display);font-size:1.45rem;font-weight:600}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero-art{perspective:1100px;touch-action:pan-y;position:relative;min-width:0;aspect-ratio:1/1.12;max-width:520px;width:100%;justify-self:center}
+.hero-art .ring{position:absolute;inset:6% -6% auto -6%;translate:0 0 -90px;color:var(--muted);opacity:.55;animation:turn 240s linear infinite}
+.hero-art .ring svg{width:100%;height:auto;display:block}
+.hero-art .piece{position:absolute;inset:0;display:grid;place-items:center;translate:0 0 50px;animation:floaty 7s ease-in-out infinite}
+.hero-art .piece svg{height:100%;width:auto;max-width:100%;filter:drop-shadow(0 18px 22px rgba(0,0,0,.28))}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero-art{max-width:380px}}
 
-        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </header>
+/* collection */
+.section{padding-block:clamp(44px,7vw,88px)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1.2rem;margin-bottom:2rem}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3.2rem)}
+.sec-head p{color:var(--muted);max-width:38em;margin-top:.7rem}
+.tabs{display:flex;flex-wrap:wrap;gap:.4rem}
+.tabs button{cursor:pointer;background:transparent;border:1px solid var(--line);padding:.5rem 1rem;font-size:.9rem;font-weight:500;border-radius:2px}
+.tabs button[aria-pressed="true"]{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:clamp(18px,2.5vw,32px)}
+.card{min-width:0;display:grid;grid-template-rows:auto 1fr;gap:1rem}
+.arch{all:unset;box-sizing:border-box;cursor:pointer;display:grid;place-items:center;aspect-ratio:5/6;background:var(--arch);border-radius:999px 999px 0 0;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden;padding-top:8%;transition:background .2s}
+.arch:hover{background:color-mix(in srgb,var(--arch) 80%,var(--marigold))}
+.arch:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.arch svg{height:96%;width:auto;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25));transition:transform .25s}
+.arch svg{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px))}
+.arch:hover svg{--ty:-4px}
+.card-body{display:grid;gap:.45rem;align-content:start}
+.card h3{font-size:1.65rem;display:flex;align-items:baseline;gap:.55rem;flex-wrap:wrap}
+.dev{font-size:1.05rem;color:var(--muted);font-weight:500}
+.blurb{font-size:.95rem;color:var(--muted)}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-top:.4rem;padding-top:.8rem;border-top:1px solid var(--line)}
+.price{font-family:var(--font-display);font-size:1.45rem;font-weight:600;font-variant-numeric:tabular-nums}
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-          <div class="hero-copy">
-            <p class="eyebrow">Crafted in India. Built to endure.</p>
-            <h1>Time, reimagined with Indian soul.</h1>
-            <p class="lead">
-              Indirana creates heritage-inspired luxury watches that balance refined
-              minimalism with contemporary precision.
-            </p>
-            <div class="hero-actions">
-              <a href="#collections" class="button primary">Discover Collection</a>
-              <a href="#story" class="button secondary">Our Story</a>
-            </div>
-            <ul class="hero-metrics" aria-label="Brand statistics">
-              <li><strong>12+</strong><span>Years of design spirit</span></li>
-              <li><strong>5,000+</strong><span>Watches crafted</span></li>
-              <li><strong>24</strong><span>Precision components</span></li>
-            </ul>
-          </div>
+/* strip, story, journal */
+.strip{border-block:1px solid var(--line);background:var(--surface)}
+.strip-in{display:flex;flex-wrap:wrap;gap:.5rem 2.2rem;justify-content:space-between;padding-block:.9rem;font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+@media (max-width:860px){.story-grid{grid-template-columns:1fr}}
+.dials{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(6px,1.5vw,14px);align-items:center;padding:clamp(18px,4vw,40px) clamp(14px,3vw,28px);background:var(--arch);border:1px solid var(--line);min-width:0}
+.dials svg{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25))}
+.dials > :nth-child(2){transform:scale(1.22)}
+.story-copy{display:grid;gap:1rem;min-width:0}
+.story-copy h2{font-size:clamp(2rem,4.5vw,3.2rem)}
+.story-copy p:not(.eyebrow){color:var(--muted)}
+.journal{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(16px,2.5vw,28px);align-items:start}
+details.jcard{border:1px solid var(--line);background:var(--surface);padding:1.2rem 1.3rem;min-width:0}
+details.jcard summary{cursor:pointer;list-style:none;display:grid;gap:.55rem}
+details.jcard summary::-webkit-details-marker{display:none}
+.jcard h3{font-size:1.35rem}
+.jcard .more{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.jcard .more::before{content:"Read note"}
+.jcard[open] .more::before{content:"Close note"}
+.jcard .body{margin-top:.9rem;color:var(--muted);font-size:.95rem}
+
+/* 3D */
+.stage{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.stage.live{transition:transform .08s linear}
+@keyframes floaty{0%,100%{transform:translateY(0) rotateZ(-.7deg)}50%{transform:translateY(-12px) rotateZ(.7deg)}}
+.stage3d{position:relative;height:420px;perspective:1300px;perspective-origin:50% 35%;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;background:radial-gradient(ellipse at 50% 90%,var(--arch),transparent 70%)}
+.stage3d.drag{cursor:grabbing}
+.stage3d .disc{position:absolute;left:50%;bottom:-20%;width:min(100%,780px);aspect-ratio:1;transform:translateX(-50%) rotateX(72deg);color:var(--muted);opacity:.55;pointer-events:none}
+.stage3d .disc svg{width:100%;height:100%;display:block;animation:turn 90s linear infinite}
+.stage3d .floor{position:absolute;left:50%;bottom:6%;width:min(70%,560px);height:54px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(0,0,0,.38),transparent 70%);pointer-events:none}
+.stage3d .ring3d{position:absolute;left:50%;top:6%;width:0;height:0;transform-style:preserve-3d}
+.face{all:unset;box-sizing:border-box;position:absolute;left:0;top:0;width:var(--fw,170px);margin-left:calc(var(--fw,170px) / -2);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face svg{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 14px rgba(0,0,0,.32))}
+.turn-cap{display:flex;align-items:center;justify-content:center;gap:clamp(12px,3vw,36px);margin-top:1.2rem}
+.cap{display:grid;gap:.3rem;justify-items:center;text-align:center;min-width:min(56vw,240px)}
+.cap h3{font-size:1.9rem}
+.turn-btn{width:46px;height:46px;border:1px solid var(--fg);background:transparent;cursor:pointer;font-size:1.3rem;line-height:1;border-radius:50%;flex:none}
+.turn-btn:hover{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+
+/* band */
+.band{background:var(--band);color:var(--band-fg)}
+.band .sec-head p{color:var(--band-muted)}
+.motifs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--band-line);border:1px solid var(--band-line)}
+.motif{all:unset;box-sizing:border-box;cursor:pointer;background:var(--band);padding:1.4rem;display:grid;grid-template-columns:96px 1fr;gap:1.1rem;align-items:start;min-width:0}
+.motif:hover{background:var(--band-card)}
+.motif:focus-visible{outline:2px solid var(--marigold);outline-offset:-3px}
+.motif svg{width:96px;height:96px}
+.motif h3{font-size:1.3rem;margin-bottom:.3rem}
+.motif p{font-size:.92rem;color:var(--band-muted);line-height:1.5}
+.motif .go{display:inline-block;margin-top:.5rem;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--marigold)}
+
+/* craft */
+.craft{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(20px,3vw,40px)}
+.craft h3{font-size:1.5rem;margin-bottom:.5rem}
+.craft p{color:var(--muted)}
+.craft > div{padding-top:1rem;border-top:2px solid var(--fg);min-width:0}
+.table-scroll{overflow-x:auto;margin-top:2.6rem;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.95rem}
+th,td{text-align:left;padding:.8rem 1.1rem;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child th,tr:last-child td{border-bottom:0}
+thead th{font-family:var(--font-display);font-size:1.15rem;font-weight:600;background:var(--arch)}
+tbody th{font-weight:600;color:var(--muted);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;width:26%}
+
+/* enquire */
+.enq{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,64px);align-items:start}
+@media (max-width:860px){.enq{grid-template-columns:1fr}}
+.enq-copy{display:grid;gap:1rem;min-width:0}
+.enq-copy h2{font-size:clamp(2rem,4.5vw,3.2rem)}
+.enq-copy p{color:var(--muted)}
+.promises{list-style:none;padding:0;margin:.6rem 0 0;display:grid;gap:.6rem}
+.promises li{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:baseline;font-size:.95rem}
+.promises li::before{content:"";width:9px;height:9px;background:var(--marigold);transform:rotate(45deg) translateY(-1px)}
+form.enq-form{display:grid;gap:1rem;padding:clamp(18px,3vw,32px);background:var(--surface);border:1px solid var(--line);min-width:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+label{display:grid;gap:.35rem;font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:0}
+input,select,textarea{font:inherit;font-size:1rem;letter-spacing:0;text-transform:none;font-weight:400;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:.7rem .8rem;width:100%;min-width:0}
+textarea{min-height:90px;resize:vertical}
+.summary{display:grid;gap:.8rem;padding:1.2rem;background:var(--arch);border:1px dashed var(--muted)}
+.summary pre{margin:0;white-space:pre-wrap;word-break:break-word;font:.9rem/1.55 var(--font-body)}
+.summary .note{font-size:.88rem;color:var(--muted)}
+.summary .acts{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.copied{font-size:.85rem;color:var(--accent);font-weight:600}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:2.2rem}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.6rem 2.4rem;align-items:start;padding-bottom:1.6rem}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:.8rem 2rem;justify-content:space-between;align-items:center}
+.news{display:grid;gap:.5rem;min-width:0}
+.news-row{display:flex;gap:.5rem}
+.news-row input{flex:1;min-width:0}
+footer p{font-size:.88rem;color:var(--muted)}
+footer nav{display:flex;flex-wrap:wrap;gap:1.2rem}
+footer a{color:var(--fg);font-size:.9rem;text-decoration:none}
+footer a:hover{color:var(--accent)}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(5,14,13,.62);display:grid;place-items:center;padding:16px;overflow:auto}
+.panel{position:relative;background:var(--bg);color:var(--fg);width:min(100%,940px);max-height:100%;overflow:auto;display:grid;grid-template-columns:.9fr 1.1fr;border:1px solid var(--line)}
+@media (max-width:760px){.panel{grid-template-columns:1fr}}
+.panel .art{background:var(--arch);display:grid;place-items:center;padding:28px 20px 0;min-width:0}
+.panel .art svg{height:min(62vh,460px);width:auto;max-width:100%;filter:drop-shadow(0 14px 16px rgba(0,0,0,.28))}
+.panel .info{padding:clamp(20px,3vw,36px);display:grid;gap:1rem;align-content:start;min-width:0}
+.panel h2{font-size:2.3rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap;padding-right:2.5rem}
+.panel .story{color:var(--muted)}
+.close{position:absolute;top:10px;right:10px;width:38px;height:38px;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:1.3rem;line-height:1;border-radius:2px;z-index:2}
+.swatches{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.swatches .lab{font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:.3rem}
+.sw{width:34px;height:34px;border-radius:50%;border:2px solid var(--bg);box-shadow:0 0 0 1px var(--muted);cursor:pointer;padding:0}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--accent)}
+dl.specs{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.2rem;font-size:.93rem;border-top:1px solid var(--line);padding-top:.9rem}
+dl.specs dt{color:var(--muted)}
+dl.specs dd{margin:0;font-weight:500}
+.buyrow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem;margin-top:.2rem}
+.buyrow .price{font-size:1.9rem}
+
+/* watch animation */
+.sec{transform-origin:100px 150px;animation:sweep 60s linear infinite}
+.sec.q{animation-timing-function:steps(60,end)}
+.bal{transform-origin:100px 177px;animation:osc 1s ease-in-out infinite alternate}
+.gear{transform-origin:107px 183px;animation:sweep 9s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+@keyframes osc{from{transform:rotate(-130deg)}to{transform:rotate(130deg)}}
+@keyframes turn{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Indirana Watch Company home">
+      <svg viewBox="0 0 28 34" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 32V15Q3 7 14 1Q25 7 25 15V32"/><circle cx="14" cy="19" r="6.5"/><path d="M14 19V15M14 19l3 1.6" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <span><b>Indirana</b><small>Watch Company</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#collection">Collection</a>
+      <a href="#showcase">3D view</a>
+      <a href="#motifs">Dial motifs</a>
+      <a href="#story">Story</a>
+      <a href="#craft">Craft</a>
+      <a href="#journal">Journal</a>
+      <a class="btn small" href="#enquire">Enquire</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Leather and automatic watches &middot; इंदिराणा</p>
+        <h1>Dials with a <em>lineage.</em></h1>
+        <p class="lede">Every Indirana dial carries a motif from Indian craft: the jaali screen, the peacock feather, the lotus, the cusped arch. Worn on full-grain leather, priced for the everyday wrist.</p>
+        <div class="price-pair">
+          <button type="button" data-filter="leather"><span>Leather &middot; Quartz</span><strong>&#8377;5,000 &ndash; &#8377;10,000</strong></button>
+          <button type="button" data-filter="automatic"><span>Automatic</span><strong>&#8377;15,000 &ndash; &#8377;30,000</strong></button>
         </div>
-      </section>
-
-      <section class="brand-strip">
-        <div class="container strip-inner">
-          <span>Swiss-inspired movement</span>
-          <span>Modern Indian design</span>
-          <span>Premium finish</span>
-          <span>Lifetime care</span>
-        </div>
-      </section>
-
-      <section id="story" class="story section-spacing">
-        <div class="container story-grid">
-          <div class="story-image">
-            <img
-              src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=80"
-              alt="Luxury watch close-up"
-            />
-          </div>
-
-          <div class="story-copy">
-            <p class="eyebrow">Our heritage</p>
-            <h2>Designed for those who carry quiet confidence.</h2>
-            <p>
-              Indirana was born from a love of classic Indian artistry and the precision
-              of modern engineering. Each watch is shaped to honor age-old craftsmanship
-              while fitting effortlessly into a contemporary lifestyle.
-            </p>
-            <p>
-              From the first sketch to the final polish, every detail reflects a belief
-              that luxury should be meaningful, enduring, and beautifully honest.
-            </p>
-            <div class="story-signature">
-              <span class="signature-line">Aarav &amp; Meera</span>
-              <small>Founders, Indirana</small>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="collections" class="collections section-spacing">
-        <div class="container section-head">
-          <div>
-            <p class="eyebrow">Collections</p>
-            <h2>Signature timepieces</h2>
-          </div>
-          <a href="#contact" class="text-link">Book a private viewing</a>
-        </div>
-
-        <div class="container product-grid">
-          <article class="product-card">
-            <img
-              src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=900&q=80"
-              alt="Saffron Tide watch"
-            />
-            <div class="product-info">
-              <div class="product-meta">
-                <span class="tag">Classic</span>
-                <span class="price">₹26,500</span>
-              </div>
-              <h3>Saffron Tide</h3>
-              <p>Warm gold tones inspired by India’s golden hour and coastal elegance.</p>
-            </div>
-          </article>
-
-          <article class="product-card featured">
-            <img
-              src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=900&q=80"
-              alt="Monsoon Muse watch"
-            />
-            <div class="product-info">
-              <div class="product-meta">
-                <span class="tag">Best Seller</span>
-                <span class="price">₹31,900</span>
-              </div>
-              <h3>Monsoon Muse</h3>
-              <p>Minimal silhouettes with a dark dial and refined detailing for everyday luxury.</p>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <img
-              src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&fit=crop&w=900&q=80"
-              alt="Lotus Horizon watch"
-            />
-            <div class="product-info">
-              <div class="product-meta">
-                <span class="tag">Heritage</span>
-                <span class="price">₹29,200</span>
-              </div>
-              <h3>Lotus Horizon</h3>
-              <p>Elegant proportions and a quiet luxury finish inspired by timeless Indian gardens.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="watch-showcase" aria-label="Featured watch display">
-        <div class="container watch-showcase-inner">
-          <div class="watch-card">
-            <div class="watch-glow"></div>
-            <div class="watch-case">
-              <div class="watch-dial">
-                <div class="watch-center"></div>
-                <div class="watch-hand hour"></div>
-                <div class="watch-hand minute"></div>
-                <div class="watch-hand second"></div>
-                <div class="dial-mark mark-1"></div>
-                <div class="dial-mark mark-2"></div>
-                <div class="dial-mark mark-3"></div>
-                <div class="dial-mark mark-4"></div>
-                <div class="dial-mark mark-5"></div>
-                <div class="dial-mark mark-6"></div>
-                <div class="dial-mark mark-7"></div>
-                <div class="dial-mark mark-8"></div>
-                <div class="dial-mark mark-9"></div>
-                <div class="dial-mark mark-10"></div>
-                <div class="dial-mark mark-11"></div>
-                <div class="dial-mark mark-12"></div>
-              </div>
-            </div>
-            <div class="strap strap-top"></div>
-            <div class="strap strap-bottom"></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="craft" class="craft section-spacing">
-        <div class="container craft-grid">
-          <div class="craft-copy">
-            <p class="eyebrow">Craftsmanship</p>
-            <h2>Precision built with intention.</h2>
-            <div class="craft-points">
-              <div>
-                <span>01</span>
-                <div>
-                  <h3>Japanese quartz movement</h3>
-                  <p>Reliable, accurate timekeeping in a refined everyday form.</p>
-                </div>
-              </div>
-              <div>
-                <span>02</span>
-                <div>
-                  <h3>Brushed steel finish</h3>
-                  <p>A subtle, premium texture that balances resilience and elegance.</p>
-                </div>
-              </div>
-              <div>
-                <span>03</span>
-                <div>
-                  <h3>Limited-run detailing</h3>
-                  <p>Each series is crafted in restrained quantities for a more personal experience.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="craft-quote">
-            <div class="quote-card">
-              <p>
-                “A watch should feel like a quiet companion—precise enough for the day and
-                timeless enough for memory.”
-              </p>
-              <strong>— Indirana Studio</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="journal" class="journal section-spacing">
-        <div class="container section-head">
-          <div>
-            <p class="eyebrow">Journal</p>
-            <h2>Notes from the atelier</h2>
-          </div>
-        </div>
-
-        <div class="container journal-grid">
-          <article class="journal-card">
-            <span>Style Guide</span>
-            <h3>How to wear heritage luxury in everyday life</h3>
-            <a href="#contact">Read story</a>
-          </article>
-          <article class="journal-card">
-            <span>Materials</span>
-            <h3>Why brushed steel remains a quiet statement</h3>
-            <a href="#contact">Read story</a>
-          </article>
-          <article class="journal-card">
-            <span>Craft</span>
-            <h3>The symbolism behind our dial design language</h3>
-            <a href="#contact">Read story</a>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer id="contact" class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a href="#top" class="brand footer-brand" aria-label="Indirana home">
-            <span class="brand-mark">I</span>
-            <span class="brand-text">Indirana</span>
-          </a>
-          <p>
-            A modern watch house celebrating Indian heritage, refined design, and lasting value.
-          </p>
-        </div>
-
-        <div>
-          <h3>Visit Studio</h3>
-          <p>17 Heritage Lane, Bengaluru</p>
-          <p>hello@indirana.com</p>
-          <p>+91 98765 43210</p>
-        </div>
-
-        <div>
-          <h3>Newsletter</h3>
-          <form class="newsletter-form">
-            <label class="sr-only" for="email">Email address</label>
-            <input id="email" type="email" placeholder="Your email" />
-            <button type="submit">Join</button>
-          </form>
+        <div class="hero-actions">
+          <a class="btn" href="#collection">See the collection</a>
+          <a class="btn ghost" href="#motifs">Read the dials</a>
         </div>
       </div>
-
-      <div class="container footer-bottom">
-        <span>© <span id="year"></span> Indirana Watch Company</span>
-        <span>Crafted with care in India</span>
+      <div class="hero-art" id="heroArt">
+        <div class="stage" id="heroStage">
+        <div class="ring" aria-hidden="true">
+          <svg viewBox="0 0 400 400"><defs><pattern id="hj" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 0L20 10L10 20L0 10Z" fill="none" stroke="currentColor" stroke-width=".9"/><circle cx="10" cy="10" r="1.7" fill="currentColor"/></pattern><mask id="hm"><rect width="400" height="400" fill="black"/><circle cx="200" cy="200" r="196" fill="white"/><circle cx="200" cy="200" r="132" fill="black"/></mask></defs><rect width="400" height="400" fill="url(#hj)" mask="url(#hm)"/><circle cx="200" cy="200" r="196" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="200" cy="200" r="132" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+        </div>
+        <div class="piece" id="heroWatch"></div>
+        </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
-  </body>
+  <section class="strip" aria-label="Highlights">
+    <div class="wrap strip-in"><span>Leather and automatic</span><span>Indian dial motifs</span><span>Four strap colours</span><span>Two-year warranty</span></div>
+  </section>
+
+  <section class="section" id="story">
+    <div class="wrap story-grid">
+      <div class="dials" id="storyDials"></div>
+      <div class="story-copy">
+        <p class="eyebrow">Our story</p>
+        <h2>Designed for those who carry quiet confidence.</h2>
+        <p>Indirana started with a simple question: why do affordable watches all look alike? The answer was already around us, in palace screens, temple lotuses and festival marigolds.</p>
+        <p>We drew that ornament onto dials you can afford. Leather watches start at &#8377;5,000 and automatics start at &#8377;15,000, each on a strap that softens to your wrist.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="collection" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Eight original designs, eight case shapes</p>
+          <h2>The collection</h2>
+          <p>Leather quartz watches from &#8377;5,490. Self-winding automatics with an open-heart window from &#8377;15,900. Tap any watch to try the strap colours.</p>
+        </div>
+        <div class="tabs" role="group" aria-label="Filter collection">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="leather" aria-pressed="false">Leather</button>
+          <button type="button" data-filter="automatic" aria-pressed="false">Automatic</button>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="showcase" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">3D turntable</p>
+          <h2>Turn the collection</h2>
+          <p>Drag to spin all eight watches, or use the arrows. Select the watch at the front to open it.</p>
+        </div>
+      </div>
+      <div class="stage3d" id="stage3d" tabindex="0" role="group" aria-roledescription="carousel" aria-label="3D turntable of all eight watches. Use the left and right arrow keys to rotate.">
+        <div class="disc" aria-hidden="true">
+          <svg viewBox="0 0 400 400"><defs><pattern id="hj2" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 0L20 10L10 20L0 10Z" fill="none" stroke="currentColor" stroke-width=".9"/><circle cx="10" cy="10" r="1.7" fill="currentColor"/></pattern><mask id="hm2"><rect width="400" height="400" fill="black"/><circle cx="200" cy="200" r="196" fill="white"/><circle cx="200" cy="200" r="120" fill="black"/></mask></defs><rect width="400" height="400" fill="url(#hj2)" mask="url(#hm2)"/><circle cx="200" cy="200" r="196" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="200" cy="200" r="120" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <div class="floor" aria-hidden="true"></div>
+        <div class="ring3d" id="ring3d"></div>
+      </div>
+      <div class="turn-cap">
+        <button class="turn-btn" type="button" id="turnPrev" aria-label="Previous watch">&larr;</button>
+        <div class="cap" aria-live="polite">
+          <p class="eyebrow" id="cTag"></p>
+          <h3 id="cName"></h3>
+          <p class="price" id="cPrice"></p>
+          <button class="btn small" type="button" id="cOpen">View details</button>
+        </div>
+        <button class="turn-btn" type="button" id="turnNext" aria-label="Next watch">&rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="motifs">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Where the dials come from</p>
+          <h2>Six motifs, read closely</h2>
+          <p>We borrow from palace screens, temple ceilings, festival marigolds and enamelled jewellery, then simplify until the pattern still reads at 38 millimetres. Select a motif to open its watch.</p>
+        </div>
+      </div>
+      <div class="motifs" id="motifGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="craft">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Made to be worn daily</p>
+          <h2>Leather you can feel, movements you can watch</h2>
+        </div>
+      </div>
+      <div class="craft">
+        <div><h3>The leather</h3><p>Full-grain, vegetable-tanned leather, cut and stitched by hand with edges painted to match the strap. It starts firm and softens to your wrist within a few weeks. Four colours on every model.</p></div>
+        <div><h3>The movement</h3><p>Leather models run on quartz with a ticking seconds hand. Automatics wind themselves as you move; the open-heart window at six shows the balance wheel swinging and a gear turning.</p></div>
+        <div><h3>The dial</h3><p>Motifs are printed, pressed and lacquered in layers, then checked under magnification. Selected dials use Devanagari numerals: &#2407;&#2408; at twelve, &#2409; at three, &#2412; at six, &#2415; at nine.</p></div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">Leather</th><th scope="col">Automatic</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Price</th><td>&#8377;5,000 &ndash; &#8377;10,000</td><td>&#8377;15,000 &ndash; &#8377;30,000</td></tr>
+            <tr><th scope="row">Movement</th><td>Quartz, ticking seconds</td><td>Self-winding mechanical, sweeping seconds</td></tr>
+            <tr><th scope="row">Case</th><td>38 mm stainless steel, a different shape on each model</td><td>40 mm stainless steel, open-heart dial, a different shape on each model</td></tr>
+            <tr><th scope="row">Crystal</th><td>Mineral</td><td>Sapphire-coated</td></tr>
+            <tr><th scope="row">Water resistance</th><td>30 m, splash and rain</td><td>50 m, handwashing and showers</td></tr>
+            <tr><th scope="row">Strap</th><td colspan="2">20 mm full-grain leather, hand-stitched, in tan, oxblood, black or olive</td></tr>
+            <tr><th scope="row">Upkeep</th><td>Battery change every two to three years</td><td>Wear daily or wind by crown; service every four to five years</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="journal" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">Journal</p><h2>Notes from the bench</h2></div></div>
+      <div class="journal">
+        <details class="jcard"><summary><span class="eyebrow">Style guide</span><h3>Which strap colour goes with what</h3><span class="more"></span></summary><p class="body">Tan suits cotton, linen and weekend wear. Oxblood works with suits and formal Indian wear. Black is the evening choice. Olive sits well with denim and earth tones. Every model comes in all four.</p></details>
+        <details class="jcard"><summary><span class="eyebrow">Materials</span><h3>Why leather darkens with wear</h3><span class="more"></span></summary><p class="body">Vegetable-tanned leather takes in oils from your skin and colour from daylight, so it darkens and gains a soft sheen over the first few months. This is normal and part of the strap&rsquo;s character. Keep it dry and let it air after wet days.</p></details>
+        <details class="jcard"><summary><span class="eyebrow">Dials</span><h3>How to read a Devanagari dial</h3><span class="more"></span></summary><p class="body">Devanagari numerals use the same positional system as the digits you know: &#2407; is 1, &#2408; is 2, &#2409; is 3, &#2410; is 4, &#2411; is 5, &#2412; is 6, &#2413; is 7, &#2414; is 8, &#2415; is 9 and &#2406; is 0. So &#2407;&#2408; at the top of the dial is twelve, &#2409; is three, &#2412; is six and &#2415; is nine.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="enquire">
+    <div class="wrap enq">
+      <div class="enq-copy">
+        <p class="eyebrow">Enquire</p>
+        <h2>Choose a watch, tell us the strap</h2>
+        <p style="color:var(--band-muted)">Send us the model and strap colour you like and we will reply with availability, delivery time and sizing help.</p>
+        <ul class="promises">
+          <li>Free shipping across India</li>
+          <li>Two-year warranty on every watch</li>
+          <li>Seven-day returns, unworn</li>
+          <li>Strap sizing guide with every order</li>
+        </ul>
+      </div>
+      <div style="min-width:0">
+        <form class="enq-form" id="enqForm" novalidate>
+          <div class="row">
+            <label for="fName">Your name<input id="fName" name="name" autocomplete="name" required></label>
+            <label for="fContact">Phone or email<input id="fContact" name="contact" autocomplete="off" required></label>
+          </div>
+          <div class="row">
+            <label for="fWatch">Watch<select id="fWatch" name="watch"></select></label>
+            <label for="fStrap">Strap<select id="fStrap" name="strap"></select></label>
+          </div>
+          <label for="fMsg">Wrist size or a note<textarea id="fMsg" name="msg" placeholder="Wrist circumference in cm, gift wrapping, delivery city"></textarea></label>
+          <p id="fErr" class="note" style="color:var(--accent);font-size:.9rem" hidden>Add your name and a phone number or email so we can reply.</p>
+          <button class="btn" type="submit">Prepare my enquiry</button>
+        </form>
+        <div class="summary" id="summary" hidden style="margin-top:1rem">
+          <pre id="summaryText"></pre>
+          <p class="note">This page has no server connected, so nothing has been sent yet. Copy the summary and send it to <span id="mailText">hello@indiranawatchcompany.com</span>.</p>
+          <div class="acts"><button class="btn small" type="button" id="copyBtn">Copy summary</button><span class="copied" id="copied" hidden>Copied</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <p><b style="font-family:var(--font-display);font-size:1.1rem;color:var(--fg)">Indirana Watch Company</b></p>
+      <p>Leather and automatic watches, priced for everyday India.</p>
+    </div>
+    <div>
+      <p class="eyebrow" style="margin-bottom:.4rem">Write to us</p>
+      <p><span id="mailLine">hello@indiranawatchcompany.com</span></p>
+    </div>
+    <form class="news" id="news" novalidate>
+      <label for="nEmail">Newsletter</label>
+      <div class="news-row"><input id="nEmail" type="email" placeholder="Your email" autocomplete="email"><button class="btn small" type="submit">Join</button></div>
+      <p id="newsMsg" role="status" style="color:var(--accent)" hidden></p>
+    </form>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>&copy; 2026 Indirana Watch Company</p>
+    <nav aria-label="Footer"><a href="#collection">Collection</a><a href="#story">Story</a><a href="#craft">Craft</a><a href="#journal">Journal</a><a href="#enquire">Enquire</a></nav>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="close" type="button" id="mClose" aria-label="Close">&times;</button>
+    <div class="art" id="mArt"></div>
+    <div class="info">
+      <p class="eyebrow" id="mEyebrow"></p>
+      <h2 id="mTitle"></h2>
+      <p class="story" id="mStory"></p>
+      <div class="swatches" id="mSwatches"></div>
+      <dl class="specs" id="mSpecs"></dl>
+      <div class="buyrow"><span class="price" id="mPrice"></span><button class="btn" type="button" id="mEnquire">Enquire about this watch</button></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+var STRAPS={
+  tan:{n:'Tan',c:'#9B5B2E',d:'#74401D'},
+  oxblood:{n:'Oxblood',c:'#6E1F26',d:'#4B1318'},
+  black:{n:'Black',c:'#2A2625',d:'#121010'},
+  olive:{n:'Olive',c:'#5F6236',d:'#40431F'}
+};
+var METALS={
+  steel:['#F2F4F5','#B9C0C4','#7C868B'],
+  brass:['#F3DFA0','#C79A3E','#86621F'],
+  rose:['#F5D6C8','#C98D77','#8A5646'],
+  gold:['#F7E6AE','#D2A54A','#8E6A24']
+};
+var WATCHES=[
+ {id:'mor',shape:'round',hands:'buta',caseName:'round',name:'Mor',hi:'मोर',tag:'Peacock',line:'leather',price:6490,strap:'tan',metal:'brass',motif:'peacock',dial:'#0E5553',accent:'#E0A030',ink:'#F3E7C8',sec:'#E0A030',num:[['१२',0],['३',90],['९',270]],
+  blurb:'A gold peacock feather rises from six o’clock on a deep teal dial.',
+  story:'The feather and its eye, drawn in gold at six o’clock, come from Pichwai painting and temple textiles. Devanagari numerals mark twelve, three and nine. Teardrop hands echo the feather\u2019s eye.'},
+ {id:'jaali',shape:'octagon',hands:'sword',caseName:'octagonal',name:'Jaali',hi:'जाली',tag:'Lattice',line:'leather',price:7990,strap:'black',metal:'steel',motif:'jaali',dial:'#24305A',accent:'#8A9BD6',ink:'#E7EAF6',sec:'#E8A020',num:null,
+  blurb:'The pierced stone screens of palace windows, as a lattice ring around a calm centre.',
+  story:'Rajasthani and Mughal palaces filter light through carved stone lattices. The dial keeps that diamond lattice in a ring and leaves the centre quiet for reading the time. The octagonal case follows the eight-pointed star found in jaali work.'},
+ {id:'kamal',shape:'round',hands:'buta',caseName:'lotus-edged',name:'Kamal',hi:'कमल',tag:'Lotus',line:'leather',price:5490,strap:'oxblood',metal:'rose',motif:'lotus',dial:'#EFD9CE',accent:'#B4535A',ink:'#4A1F24',sec:'#B4535A',num:[['१२',0],['३',90],['६',180],['९',270]],
+  blurb:'Two layers of lotus petals open around the centre of a blush dial.',
+  story:'Twelve petals open around the hub as on the lotus carved into temple ceilings from Hampi to Khajuraho. A rose-gold case warms the blush dial. The scalloped case edge is a ring of twelve lotus petals.'},
+ {id:'surya',shape:'round',hands:'leaf',caseName:'sunray-edged',name:'Surya',hi:'सूर्य',tag:'Sun',line:'leather',price:8990,strap:'olive',metal:'brass',motif:'sun',dial:'#DB9A1E',accent:'#5B3200',ink:'#2B1800',sec:'#8A1C1C',num:[['१२',0],['३',90],['६',180],['९',270]],
+  blurb:'A sunburst in marigold, the colour of festival garlands.',
+  story:'Fine rays run from the hub to the rim in the colour of marigold garlands. Bold Devanagari numerals keep it easy to read at a glance. Twenty-four rays around the case edge carry the sun outward.'},
+ {id:'mehrab',shape:'arch',hands:'sword',caseName:'arch-shaped',name:'Mehrab',hi:'मेहराब',tag:'Arch',line:'automatic',price:27900,strap:'tan',metal:'gold',motif:'arch',dial:'#12403A',dial2:'#0A2C28',accent:'#D9B25E',ink:'#F1E6C6',sec:'#D9B25E',num:null,
+  blurb:'A cusped arch frames the dial, with an open-heart window at six.',
+  story:'The cusped arch is taken from Mughal gateways and mosque niches. A gold case, a deep green dial and the open-heart window make this the most formal watch we make. The case itself is arch-shaped, so the whole watch reads as a doorway.'},
+ {id:'nawab',shape:'barrel',hands:'leaf',caseName:'barrel-shaped',name:'Nawab',hi:'नवाब',tag:'Rosette',line:'automatic',price:18900,strap:'black',metal:'steel',motif:'guilloche',dial:'#23262B',accent:'#C9CED6',ink:'#EEF0F3',sec:'#E8A020',num:[['१२',0],['३',90],['९',270]],
+  blurb:'Engine-turned rosettes on a graphite dial, with the balance wheel on show.',
+  story:'Overlapping circles form a rosette pattern inspired by Awadhi chikankari embroidery. Steel and graphite keep it understated, with the movement visible at six. The barrel-shaped case has soft curves in place of corners.'},
+ {id:'konark',shape:'round',hands:'buta',caseName:'beaded round',name:'Konark',hi:'कोणार्क',tag:'Wheel',line:'automatic',price:15900,strap:'oxblood',metal:'brass',motif:'wheel',dial:'#EFE6CF',accent:'#7A2E1B',ink:'#2A1B12',sec:'#A32A1E',num:null,
+  blurb:'The spoked chariot wheel of Konark, cut into an ivory dial.',
+  story:'The great stone wheels of the Konark Sun Temple have eight broad spokes and a ring of beads. The dial reduces them to line, with the open-heart window at six. Our most affordable automatic. A beaded bezel carries the wheel\u2019s ring of beads onto the case.'},
+ {id:'meena',shape:'cushion',hands:'sword',caseName:'cushion-shaped',name:'Meenakari',hi:'मीनाकारी',tag:'Enamel',line:'automatic',price:29500,strap:'black',metal:'gold',motif:'enamel',dial:'#16376E',accent:'#E3BF6A',ink:'#F4ECD4',sec:'#E3BF6A',num:null,
+  blurb:'Enamel-bright dots and petals on royal blue, set in a gold case.',
+  story:'Meenakari jewellery sets bright enamel in gold. The dial echoes it with a ring of red, green and ivory dots and eight petals around the hub. The top of the range. The cushion case is softly squared, like a jewellery box.'}
+];
+var W={};WATCHES.forEach(function(w){W[w.id]=w;});
+function fmt(n){return '₹'+n.toLocaleString('en-IN');}
+function polar(r,deg){var a=(deg-90)*Math.PI/180;return [(100+r*Math.cos(a)).toFixed(2),(150+r*Math.sin(a)).toFixed(2)];}
+
+function motif(w,u){
+  var c=w.accent,s='',k,p,q;
+  switch(w.motif){
+  case 'peacock':
+    s+='<circle cx="100" cy="150" r="46" fill="none" stroke="'+c+'" stroke-width=".6" opacity=".7"/>';
+    for(k=-4;k<=4;k++){s+='<path d="M100 197 Q'+(100+k*3)+' 185 '+(100+k*7.5)+' '+(171+Math.abs(k)*1.6)+'" stroke="'+c+'" stroke-width=".6" fill="none" opacity=".85"/>';}
+    s+='<ellipse cx="100" cy="177" rx="7" ry="9" fill="'+c+'"/><ellipse cx="100" cy="177" rx="4.6" ry="6.2" fill="#0A3636"/><ellipse cx="100" cy="177" rx="2.2" ry="3.2" fill="#3FB8AB"/>';
+    break;
+  case 'jaali':
+    p=u+'p';
+    s+='<defs><pattern id="'+p+'" width="10" height="10" patternUnits="userSpaceOnUse" x="95" y="145"><path d="M5 0L10 5L5 10L0 5Z" fill="none" stroke="'+c+'" stroke-width=".5"/><circle cx="5" cy="5" r="1" fill="'+c+'"/></pattern></defs>';
+    s+='<circle cx="100" cy="150" r="49" fill="url(#'+p+')" opacity=".7"/>';
+    s+='<circle cx="100" cy="150" r="33" fill="'+w.dial+'"/><circle cx="100" cy="150" r="33" fill="none" stroke="'+c+'" stroke-width=".8"/><circle cx="100" cy="150" r="31" fill="none" stroke="'+c+'" stroke-width=".3"/>';
+    break;
+  case 'lotus':
+    for(k=0;k<12;k++){s+='<ellipse cx="100" cy="124" rx="6.5" ry="17" transform="rotate('+(k*30)+' 100 150)" fill="'+c+'" opacity=".22" stroke="'+c+'" stroke-width=".4"/>';}
+    for(k=0;k<12;k++){s+='<ellipse cx="100" cy="131" rx="4.2" ry="11" transform="rotate('+(k*30+15)+' 100 150)" fill="'+c+'" opacity=".28"/>';}
+    s+='<circle cx="100" cy="150" r="5" fill="'+c+'" opacity=".5"/>';
+    break;
+  case 'sun':
+    for(k=0;k<90;k++){var a1=polar(6,k*4),a2=polar(49,k*4);s+='<line x1="'+a1[0]+'" y1="'+a1[1]+'" x2="'+a2[0]+'" y2="'+a2[1]+'" stroke="'+(k%2?'#FFFFFF':'#7A4A00')+'" stroke-width=".5" opacity=".2"/>';}
+    s+='<circle cx="100" cy="150" r="46" fill="none" stroke="'+c+'" stroke-width=".8"/>';
+    break;
+  case 'arch':
+    s+='<path transform="'+sc(.74)+'" d="'+CASEP.arch+'" fill="'+w.dial2+'" stroke="'+c+'" stroke-width="1"/>';
+    s+='<path transform="'+sc(.62)+'" d="'+CASEP.arch+'" fill="none" stroke="'+c+'" stroke-width=".6" opacity=".8"/>';
+    s+='<circle cx="100" cy="109" r="1.3" fill="'+c+'"/>';
+    break;
+  case 'guilloche':
+    for(k=0;k<18;k++){q=polar(17,k*20);s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="17" fill="none" stroke="'+c+'" stroke-width=".35" opacity=".55"/>';}
+    for(k=0;k<24;k++){q=polar(34,k*15);s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="12" fill="none" stroke="'+c+'" stroke-width=".25" opacity=".3"/>';}
+    s+='<circle cx="100" cy="150" r="46" fill="none" stroke="'+c+'" stroke-width=".6"/>';
+    break;
+  case 'wheel':
+    for(k=0;k<16;k++){var b1=polar(12,k*22.5),b2=polar(40,k*22.5);s+='<line x1="'+b1[0]+'" y1="'+b1[1]+'" x2="'+b2[0]+'" y2="'+b2[1]+'" stroke="'+c+'" stroke-width="'+(k%2?'.6':'1.8')+'" opacity="'+(k%2?'.7':'.9')+'"/>';}
+    for(k=0;k<32;k++){q=polar(43,k*11.25);s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="1" fill="'+c+'"/>';}
+    s+='<circle cx="100" cy="150" r="40" fill="none" stroke="'+c+'" stroke-width=".7"/><circle cx="100" cy="150" r="12" fill="'+w.dial+'" stroke="'+c+'" stroke-width="1"/>';
+    break;
+  case 'enamel':
+    var pal=['#B3262D','#F2EBD9','#2F8F6B'];
+    for(k=0;k<12;k++){q=polar(41,k*30);s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="3.4" fill="'+pal[k%3]+'" stroke="'+c+'" stroke-width=".5"/>';}
+    for(k=0;k<8;k++){s+='<ellipse cx="100" cy="128" rx="4.6" ry="9" transform="rotate('+(k*45)+' 100 150)" fill="'+c+'" opacity=".22" stroke="'+c+'" stroke-width=".4"/>';}
+    s+='<circle cx="100" cy="150" r="28" fill="none" stroke="'+c+'" stroke-width=".4" opacity=".7"/><circle cx="100" cy="150" r="48" fill="none" stroke="'+c+'" stroke-width=".7"/>';
+    break;
+  }
+  return s;
+}
+
+var UID=0;
+var CASEP={
+  round:'M42 150a58 58 0 1 0 116 0a58 58 0 1 0 -116 0Z',
+  octagon:(function(){var p=[],k,a;for(k=0;k<8;k++){a=(22.5+k*45)*Math.PI/180;p.push((100+61*Math.sin(a)).toFixed(1)+' '+(150-61*Math.cos(a)).toFixed(1));}return 'M'+p.join('L')+'Z';})(),
+  arch:'M44 196V150Q44 112 100 86Q156 112 156 150V196Q156 212 140 212H60Q44 212 44 196Z',
+  barrel:'M52 98Q100 84 148 98Q166 150 148 202Q100 216 52 202Q34 150 52 98Z',
+  cushion:'M70 90H130Q160 90 160 120V180Q160 210 130 210H70Q40 210 40 180V120Q40 90 70 90Z'
+};
+var RIGHT={round:158,octagon:156.4,arch:156,barrel:166,cushion:160};
+var TICKS={round:{b:[43,48],s:[45,48]},octagon:{b:[40,45],s:[41,45]},arch:{b:[41,46],dots:39},barrel:{b:[43,48],s:[45,48]},cushion:{b:[43,48],s:[45,48]}};
+function sc(k){return 'translate(100 150) scale('+k+') translate(-100 -150)';}
+function handPath(style,len,hr){
+  var t=150-len,wd=hr?3.3:2.3;
+  if(style==='sword'){return 'M100 158L'+(100-wd*0.7)+' 150L'+(100-wd*0.45)+' '+(t+7)+'L100 '+t+'L'+(100+wd*0.45)+' '+(t+7)+'L'+(100+wd*0.7)+' 150Z';}
+  if(style==='buta'){return 'M100 157C'+(100-wd*2)+' 150 '+(100-wd*2.2)+' '+(t+len*0.4)+' 100 '+t+'C'+(100+wd*2.2)+' '+(t+len*0.4)+' '+(100+wd*2)+' 150 100 157Z';}
+  return 'M100 157L'+(100-wd)+' 150L100 '+t+'L'+(100+wd)+' 150Z';
+}
+function renderWatch(w,o){
+  o=o||{};
+  var u='w'+(++UID),st=STRAPS[o.strap||w.strap],m=METALS[w.metal],i,s,k,sh=w.shape||'round',cp=CASEP[sh];
+  var vb=o.dialOnly?'30 80 140 140':'0 0 200 300';
+  var label=w.name+' watch with a '+w.tag.toLowerCase()+' dial in a '+w.caseName+' case'+(o.dialOnly?'':' on a '+st.n.toLowerCase()+' leather strap');
+  s='<svg viewBox="'+vb+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+label+'">';
+  s+='<defs><linearGradient id="'+u+'s" x1="0" x2="1"><stop offset="0" stop-color="'+st.d+'"/><stop offset=".5" stop-color="'+st.c+'"/><stop offset="1" stop-color="'+st.d+'"/></linearGradient>';
+  s+='<radialGradient id="'+u+'m" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="'+m[0]+'"/><stop offset=".5" stop-color="'+m[1]+'"/><stop offset="1" stop-color="'+m[2]+'"/></radialGradient>';
+  s+='<clipPath id="'+u+'c"><path transform="'+sc(.845)+'" d="'+cp+'"/></clipPath></defs>';
+  if(!o.dialOnly){
+    s+='<path d="M71 4Q100 0 129 4L123 104L77 104Z" fill="url(#'+u+'s)"/>';
+    s+='<path d="M77 196L123 196L127 282L100 299L73 282Z" fill="url(#'+u+'s)"/>';
+    for(i=0;i<3;i++){var dy=24+i*18;s+='<path d="M100 '+(dy-6)+'L104 '+dy+'L100 '+(dy+6)+'L96 '+dy+'Z" fill="#FFFFFF" opacity=".14"/>';}
+    s+='<path d="M76 10L81 98M124 10L119 98M81 202L76 276M119 202L124 276" stroke="#F0DDB4" stroke-width=".9" stroke-dasharray="2.6 2.2" opacity=".6" fill="none"/>';
+    for(i=0;i<4;i++){s+='<circle cx="100" cy="'+(234+i*12)+'" r="2" fill="#000" opacity=".45"/>';}
+    s+='<rect x="75" y="213" width="50" height="7" rx="1.5" fill="'+st.d+'" stroke="#000" stroke-opacity=".25" stroke-width=".5"/>';
+    s+='<rect x="72" y="90" width="11" height="16" rx="3" fill="url(#'+u+'m)"/><rect x="117" y="90" width="11" height="16" rx="3" fill="url(#'+u+'m)"/>';
+    s+='<rect x="72" y="194" width="11" height="16" rx="3" fill="url(#'+u+'m)"/><rect x="117" y="194" width="11" height="16" rx="3" fill="url(#'+u+'m)"/>';
+    var cx=RIGHT[sh]-2;
+    s+='<rect x="'+cx+'" y="143" width="9" height="14" rx="2" fill="url(#'+u+'m)" stroke="'+m[2]+'" stroke-width=".5"/>';
+    s+='<path d="M'+(cx+3)+' 145V155M'+(cx+5.5)+' 145V155" stroke="'+m[2]+'" stroke-width=".5" opacity=".7"/>';
+  }
+  if(w.motif==='lotus'){for(k=0;k<12;k++){var lp=polar(57,k*30);s+='<circle cx="'+lp[0]+'" cy="'+lp[1]+'" r="7" fill="'+m[1]+'" stroke="'+m[2]+'" stroke-width=".6"/>';}}
+  if(w.motif==='sun'){for(k=0;k<24;k++){var r1=polar(56,k*15-3.2),r2=polar(65,k*15),r3=polar(56,k*15+3.2);s+='<path d="M'+r1[0]+' '+r1[1]+'L'+r2[0]+' '+r2[1]+'L'+r3[0]+' '+r3[1]+'Z" fill="'+m[1]+'" stroke="'+m[2]+'" stroke-width=".4"/>';}}
+  s+='<path d="'+cp+'" fill="url(#'+u+'m)" stroke="'+m[2]+'" stroke-width=".7"/>';
+  if(w.motif==='wheel'){s+='<circle cx="100" cy="150" r="55" fill="none" stroke="'+m[2]+'" stroke-width="2.6" stroke-dasharray="0.1 4.22" stroke-linecap="round" opacity=".75"/>';}
+  s+='<path transform="'+sc(.91)+'" d="'+cp+'" fill="none" stroke="'+m[2]+'" stroke-width=".6" opacity=".6"/>';
+  s+='<path transform="'+sc(.845)+'" d="'+cp+'" fill="'+w.dial+'"/>';
+  s+='<g clip-path="url(#'+u+'c)">'+motif(w,u)+'</g>';
+  var numAt={};
+  if(w.num){w.num.forEach(function(n){numAt[n[1]]=1;});}
+  if(w.motif!=='enamel'){
+    var T=TICKS[sh]||TICKS.round;
+    for(i=0;i<12;i++){
+      if(numAt[i*30]){continue;}
+      if(T.dots&&i%3!==0){var dp=polar(T.dots,i*30);s+='<circle cx="'+dp[0]+'" cy="'+dp[1]+'" r="1.1" fill="'+w.ink+'"/>';continue;}
+      var big=i%3===0,rr=big?T.b:(T.s||T.b);
+      var t1=polar(rr[0],i*30),t2=polar(rr[1],i*30);
+      s+='<line x1="'+t1[0]+'" y1="'+t1[1]+'" x2="'+t2[0]+'" y2="'+t2[1]+'" stroke="'+w.ink+'" stroke-width="'+(big?'1.6':'1')+'" stroke-linecap="round"/>';
+    }
+  }
+  if(w.num){
+    w.num.forEach(function(n){
+      var q=polar(w.motif==='lotus'||w.motif==='sun'?37:38,n[1]);
+      s+='<text x="'+q[0]+'" y="'+(parseFloat(q[1])+3)+'" text-anchor="middle" font-size="10" font-weight="600" fill="'+w.ink+'">'+n[0]+'</text>';
+    });
+  }
+  var by=w.motif==='arch'?135:132;
+  s+='<text x="100" y="'+by+'" text-anchor="middle" font-size="4.4" letter-spacing="1.3" font-weight="600" fill="'+w.ink+'">INDIRANA</text>';
+  if(w.line==='automatic'){
+    s+='<text x="100" y="'+(by+5.5)+'" text-anchor="middle" font-size="3.2" letter-spacing="1" fill="'+w.ink+'" opacity=".8">AUTOMATIC</text>';
+    s+='<circle cx="100" cy="177" r="13.5" fill="'+m[1]+'"/><circle cx="100" cy="177" r="12" fill="#1E1810"/>';
+    s+='<circle cx="100" cy="177" r="12" fill="none" stroke="#C9A25A" stroke-width=".3" opacity=".6"/>';
+    s+='<circle class="gear" cx="107" cy="183" r="4" fill="none" stroke="#C9A25A" stroke-width="2.4" stroke-dasharray="1.4 1"/>';
+    s+='<g class="bal"><circle cx="100" cy="177" r="7" fill="none" stroke="#D9B25E" stroke-width="1.1"/><path d="M100 170V184M93 177H107" stroke="#D9B25E" stroke-width=".7"/><circle cx="100" cy="177" r="3" fill="none" stroke="#D9B25E" stroke-width=".4"/></g>';
+    s+='<circle cx="93" cy="171" r="1.5" fill="#C23B3B"/>';
+  }
+  var hs=w.hands||'leaf';
+  s+='<g fill="'+w.ink+'" stroke="'+w.dial+'" stroke-width=".5">';
+  s+='<path transform="rotate(305 100 150)" d="'+handPath(hs,29,1)+'"/>';
+  s+='<path transform="rotate(60 100 150)" d="'+handPath(hs,41,0)+'"/></g>';
+  if(o.dialOnly){
+    s+='<g transform="rotate(35 100 150)"><line x1="100" y1="164" x2="100" y2="105" stroke="'+w.sec+'" stroke-width=".8"/></g>';
+  }else{
+    s+='<g class="sec'+(w.line==='leather'?' q':'')+'"><line x1="100" y1="165" x2="100" y2="105" stroke="'+w.sec+'" stroke-width=".8"/><circle cx="100" cy="106" r="1.4" fill="'+w.sec+'"/></g>';
+  }
+  s+='<circle cx="100" cy="150" r="2.6" fill="'+w.sec+'" stroke="'+w.dial+'" stroke-width=".6"/>';
+  s+='<ellipse cx="80" cy="120" rx="15" ry="6" transform="rotate(-38 80 120)" fill="#FFFFFF" opacity=".08"/>';
+  s+='</svg>';
+  return s;
+}
+
+/* page build */
+var grid=document.getElementById('grid');
+grid.innerHTML=WATCHES.map(function(w){
+  return '<article class="card" data-line="'+w.line+'">'+
+   '<button class="arch" type="button" data-open="'+w.id+'" aria-label="View '+w.name+' details">'+renderWatch(w)+'</button>'+
+   '<div class="card-body"><p class="eyebrow">'+(w.line==='leather'?'Leather &middot; Quartz':'Automatic &middot; Leather strap')+'</p>'+
+   '<h3>'+w.name+' <span class="dev" lang="hi">'+w.hi+'</span></h3>'+
+   '<p class="blurb">'+w.blurb+'</p>'+
+   '<div class="card-foot"><span class="price">'+fmt(w.price)+'</span><button class="btn small" type="button" data-open="'+w.id+'">View</button></div></div></article>';
+}).join('');
+document.getElementById('heroWatch').innerHTML=renderWatch(W.mehrab,{strap:'tan'});
+document.getElementById('motifGrid').innerHTML=['mor','jaali','kamal','surya','mehrab','meena'].map(function(id){
+  var w=W[id];
+  var src={mor:'Pichwai paintings and temple textiles',jaali:'Carved stone screens of palace windows',kamal:'Lotus ceilings in stone temples',surya:'Marigold garlands and festival colour',mehrab:'Cusped arches of Mughal gateways',meena:'Enamel set in gold jewellery'}[id];
+  return '<button class="motif" type="button" data-open="'+id+'">'+renderWatch(w,{dialOnly:true})+
+   '<span><h3>'+w.tag+'</h3><p>'+src+'. Worn on the '+w.name+', '+fmt(w.price)+'.</p><span class="go">Open the '+w.name+'</span></span></button>';
+}).join('');
+
+document.getElementById('storyDials').innerHTML=['mor','mehrab','kamal'].map(function(id){return renderWatch(W[id],{dialOnly:true});}).join('');
+var selWatch=document.getElementById('fWatch'),selStrap=document.getElementById('fStrap');
+selWatch.innerHTML='<optgroup label="Leather (quartz)">'+WATCHES.filter(function(w){return w.line==='leather';}).map(function(w){return '<option value="'+w.id+'">'+w.name+' &ndash; '+fmt(w.price)+'</option>';}).join('')+'</optgroup>'+
+  '<optgroup label="Automatic">'+WATCHES.filter(function(w){return w.line==='automatic';}).map(function(w){return '<option value="'+w.id+'">'+w.name+' &ndash; '+fmt(w.price)+'</option>';}).join('')+'</optgroup>';
+selStrap.innerHTML=Object.keys(STRAPS).map(function(k){return '<option value="'+k+'">'+STRAPS[k].n+'</option>';}).join('');
+
+/* filters */
+function reduced(){return window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;}
+function goTo(id){var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:reduced()?'auto':'smooth',block:'start'});}}
+function setFilter(f){
+  document.querySelectorAll('.tabs button').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-filter')===f));});
+  document.querySelectorAll('.card').forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-line')===f);});
+}
+
+/* modal */
+var modal=document.getElementById('modal'),cur=null,curStrap=null,lastFocus=null;
+function paintModal(){
+  var w=cur;
+  document.getElementById('mArt').innerHTML=renderWatch(w,{strap:curStrap});
+  document.getElementById('mEyebrow').textContent=(w.line==='leather'?'Leather · Quartz':'Automatic · Self-winding')+' · '+w.tag+' dial';
+  document.getElementById('mTitle').innerHTML=w.name+' <span class="dev" lang="hi">'+w.hi+'</span>';
+  document.getElementById('mStory').textContent=w.story;
+  document.getElementById('mSwatches').innerHTML='<span class="lab">Strap: '+STRAPS[curStrap].n+'</span>'+Object.keys(STRAPS).map(function(k){
+    return '<button type="button" class="sw" data-strap="'+k+'" aria-label="'+STRAPS[k].n+' strap" aria-pressed="'+(k===curStrap)+'" style="background:'+STRAPS[k].c+'"></button>';
+  }).join('');
+  var a=w.line==='automatic';
+  var rows=a?[['Movement','Self-winding mechanical'],['Case','40 mm '+w.caseName+', stainless steel'],['Power reserve','40 hours'],['Crystal','Sapphire-coated'],['Water resistance','50 m'],['Strap','20 mm full-grain leather']]
+            :[['Movement','Quartz, ticking seconds'],['Case','38 mm '+w.caseName+', stainless steel'],['Battery life','About 3 years'],['Crystal','Mineral'],['Water resistance','30 m'],['Strap','20 mm full-grain leather']];
+  document.getElementById('mSpecs').innerHTML=rows.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+r[1]+'</dd>';}).join('');
+  document.getElementById('mPrice').textContent=fmt(w.price);
+}
+function openModal(id){
+  cur=W[id];if(!cur){return;}
+  curStrap=cur.strap;lastFocus=document.activeElement;
+  paintModal();modal.hidden=false;document.body.style.overflow='hidden';
+  document.getElementById('mClose').focus();
+}
+function closeModal(){
+  modal.hidden=true;document.body.style.overflow='';
+  if(lastFocus&&lastFocus.focus){try{lastFocus.focus();}catch(e){}}
+}
+
+document.addEventListener('click',function(e){
+  var t=e.target.closest?e.target.closest('[data-open],[data-filter],[data-strap]'):null;
+  if(t){
+    if(t.hasAttribute('data-open')){openModal(t.getAttribute('data-open'));return;}
+    if(t.hasAttribute('data-filter')){setFilter(t.getAttribute('data-filter'));if(t.closest('.price-pair')){goTo('collection');}return;}
+    if(t.hasAttribute('data-strap')){curStrap=t.getAttribute('data-strap');paintModal();var b=document.querySelector('.sw[aria-pressed="true"]');if(b){b.focus();}return;}
+  }
+  if(e.target===modal){closeModal();}
+});
+document.getElementById('mClose').addEventListener('click',closeModal);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden){closeModal();}});
+document.getElementById('mEnquire').addEventListener('click',function(){
+  selWatch.value=cur.id;selStrap.value=curStrap;closeModal();goTo('enquire');
+});
+
+/* enquiry */
+var form=document.getElementById('enqForm'),summary=document.getElementById('summary'),stext=document.getElementById('summaryText');
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  var name=document.getElementById('fName').value.trim(),contact=document.getElementById('fContact').value.trim();
+  var err=document.getElementById('fErr');
+  if(!name||!contact){err.hidden=false;return;}
+  err.hidden=true;
+  var w=W[selWatch.value];
+  stext.textContent='Enquiry for Indirana Watch Company\n\nName: '+name+'\nContact: '+contact+'\nWatch: '+w.name+' ('+(w.line==='leather'?'Leather, quartz':'Automatic')+'), '+fmt(w.price)+'\nStrap: '+STRAPS[selStrap.value].n+'\nNote: '+(document.getElementById('fMsg').value.trim()||'None');
+  summary.hidden=false;document.getElementById('copied').hidden=true;
+  summary.scrollIntoView({behavior:reduced()?'auto':'smooth',block:'nearest'});
+});
+document.getElementById('copyBtn').addEventListener('click',function(){
+  var txt=stext.textContent,ok=document.getElementById('copied');
+  function done(){ok.hidden=false;}
+  function fallback(){
+    try{var r=document.createRange();r.selectNodeContents(stext);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);}catch(e){}
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fallback);}else{fallback();}
+});
+/* 3D: hero tilt, card tilt, turntable */
+(function(){
+  var art=document.getElementById('heroArt'),stage=document.getElementById('heroStage');
+  if(art&&stage){
+    art.addEventListener('pointermove',function(e){
+      var r=art.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      stage.classList.add('live');
+      stage.style.setProperty('--ry',(x*26).toFixed(1)+'deg');
+      stage.style.setProperty('--rx',(-y*20).toFixed(1)+'deg');
+    });
+    var rest=function(){stage.classList.remove('live');stage.style.setProperty('--ry','0deg');stage.style.setProperty('--rx','0deg');};
+    art.addEventListener('pointerleave',rest);
+    art.addEventListener('pointercancel',rest);
+  }
+  grid.addEventListener('pointermove',function(e){
+    var a=e.target.closest?e.target.closest('.arch'):null;if(!a){return;}
+    var r=a.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    a.style.setProperty('--ry',(x*18).toFixed(1)+'deg');a.style.setProperty('--rx',(-y*14).toFixed(1)+'deg');
+  });
+  grid.addEventListener('pointerout',function(e){
+    var a=e.target.closest?e.target.closest('.arch'):null;
+    if(a&&!a.contains(e.relatedTarget)){a.style.setProperty('--ry','0deg');a.style.setProperty('--rx','0deg');}
+  });
+
+  var box=document.getElementById('stage3d'),ringEl=document.getElementById('ring3d');
+  if(!box||!ringEl){return;}
+  var n=WATCHES.length,step=360/n,faces=[],angle=0,vel=0,snap=null,dragging=false,moved=false,startX=0,lastX=0,lastT=0,hold=0,front=-1,hover=false,inView=true,noMotion=reduced();
+  var cTag=document.getElementById('cTag'),cName=document.getElementById('cName'),cPrice=document.getElementById('cPrice');
+  WATCHES.forEach(function(w){
+    var b=document.createElement('button');
+    b.type='button';b.className='face';b.tabIndex=-1;
+    b.setAttribute('data-open',w.id);b.setAttribute('aria-label','Open '+w.name);
+    b.innerHTML=renderWatch(w);
+    ringEl.appendChild(b);faces.push(b);
+  });
+  function size(){
+    var cw=box.clientWidth,fw=Math.max(110,Math.min(190,cw*.26)),R=(fw/2)/Math.tan(Math.PI/n)*1.35;
+    box.style.setProperty('--fw',fw+'px');
+    box.style.height=Math.round(fw*1.5+96)+'px';
+    faces.forEach(function(f,i){f.style.transform='rotateY('+(i*step)+'deg) translateZ('+R.toFixed(0)+'px)';});
+  }
+  function paint(){
+    ringEl.style.transform='rotateY('+angle.toFixed(2)+'deg)';
+    var i=((Math.round(-angle/step)%n)+n)%n,k;
+    for(k=0;k<n;k++){
+      var c=Math.cos((k*step+angle)*Math.PI/180);
+      faces[k].style.opacity=(.3+.7*Math.max(0,c)).toFixed(2);
+    }
+    if(i!==front){
+      front=i;var w=WATCHES[i];
+      cTag.textContent=(w.line==='leather'?'Leather · Quartz':'Automatic')+' · '+w.tag;
+      cName.textContent=w.name;cPrice.textContent=fmt(w.price);
+    }
+  }
+  function go(dir){
+    var base=snap!==null?snap:Math.round(angle/step)*step;
+    vel=0;snap=base-dir*step;
+  }
+  var prev=performance.now();
+  function tick(t){
+    var dt=Math.min(.05,(t-prev)/1000);prev=t;
+    if(inView){
+      if(!dragging){
+        if(snap!==null){
+          angle+=(snap-angle)*Math.min(1,dt*7);
+          if(Math.abs(snap-angle)<.05){angle=snap;snap=null;hold=t+2500;}
+        }else if(Math.abs(vel)>4){
+          angle+=vel*dt;vel*=Math.pow(.04,dt);
+          if(Math.abs(vel)<=4){vel=0;snap=Math.round(angle/step)*step;}
+        }else if(!noMotion&&t>hold&&!hover){
+          angle-=7*dt;
+        }
+      }
+      paint();
+    }
+    requestAnimationFrame(tick);
+  }
+  box.addEventListener('pointerdown',function(e){
+    dragging=true;moved=false;snap=null;vel=0;startX=lastX=e.clientX;lastT=performance.now();
+  });
+  box.addEventListener('pointermove',function(e){
+    if(e.pointerType==='mouse'){hover=true;}
+    if(!dragging){return;}
+    var dx=e.clientX-lastX,now=performance.now(),dtm=Math.max(1,now-lastT);
+    if(!moved&&Math.abs(e.clientX-startX)>6){moved=true;box.classList.add('drag');try{box.setPointerCapture(e.pointerId);}catch(err){}}
+    if(moved){angle+=dx*.32;vel=(dx*.32)/(dtm/1000);}
+    lastX=e.clientX;lastT=now;
+  });
+  function end(){
+    if(!dragging){return;}
+    dragging=false;box.classList.remove('drag');
+    if(!moved){return;}
+    vel=Math.max(-420,Math.min(420,vel));
+    if(Math.abs(vel)<=4){vel=0;snap=Math.round(angle/step)*step;}
+  }
+  box.addEventListener('pointerup',end);
+  box.addEventListener('pointercancel',end);
+  box.addEventListener('pointerleave',function(){hover=false;});
+  box.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft'){e.preventDefault();go(-1);}
+    if(e.key==='ArrowRight'){e.preventDefault();go(1);}
+  });
+  document.getElementById('turnPrev').addEventListener('click',function(){go(-1);});
+  document.getElementById('turnNext').addEventListener('click',function(){go(1);});
+  document.getElementById('cOpen').addEventListener('click',function(){openModal(WATCHES[front].id);});
+  if(window.IntersectionObserver){
+    new IntersectionObserver(function(es){inView=es[0].isIntersecting;}).observe(box);
+  }
+  window.addEventListener('resize',size);
+  size();paint();
+  requestAnimationFrame(tick);
+})();
+var news=document.getElementById('news'),nmsg=document.getElementById('newsMsg');
+news.addEventListener('submit',function(e){
+  e.preventDefault();
+  var v=document.getElementById('nEmail').value.trim();
+  nmsg.hidden=false;
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){nmsg.textContent='Enter a valid email address.';return;}
+  nmsg.textContent='Signup is not connected to a mailing service yet, so nothing was saved.';
+});
+})();
+
+</script>
+
+</body>
 </html>
